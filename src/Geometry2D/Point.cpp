@@ -1,5 +1,4 @@
-#include "Point.h"
-#include "../others/Constants.h"
+#include "Geometry2D/Point.h"
 #include <cmath>
 
 using namespace Geometry;

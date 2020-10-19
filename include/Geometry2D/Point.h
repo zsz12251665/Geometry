@@ -1,7 +1,7 @@
 #ifndef GEOMETRY_2D_POINT_H
 #define GEOMETRY_2D_POINT_H
 
-#include "../others/Constants.h"
+#include "Constants.h"
 
 namespace Geometry
 {
