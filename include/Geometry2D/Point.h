@@ -11,7 +11,7 @@ namespace Geometry
 		struct Vector // 向量类（同时也是点类）
 		{
 			Number x, y;
-			Vector(const Number, const Number);
+			Vector(const Number = 0, const Number = 0);
 			// 线性运算
 			Vector operator+(const Vector &) const;
 			Vector operator-(const Vector &) const;

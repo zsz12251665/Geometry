@@ -19,7 +19,7 @@ namespace Geometry
 #endif
 
 	extern const Real PI; // 圆周率（用于弧度制角度衡量）
-	int sign(const Real, const Real); // 有误差判等（a < b 为-1，a ≈ b 为0，a > b 为1）
+	int sign(const Real, const Real = 0); // 有误差判等（a < b 为-1，a ≈ b 为0，a > b 为1）
 }; // namespace Geometry
 
 #endif // GEOMETRY_CONSTANTS_H
