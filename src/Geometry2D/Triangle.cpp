@@ -1,4 +1,4 @@
-#include "Geometry2D/Line.h"
+#include "Geometry2D/Triangle.h"
 #include <cmath>
 
 using namespace Geometry;
@@ -14,8 +14,6 @@ Triangle::Triangle(const Point &a, const Point &b, const Point &c) : a(a), b(b),
 {
 	;
 }
-
-// 实数运算专用函数
 
 Real Triangle::circumference() const // 周长
 {

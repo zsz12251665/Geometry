@@ -10,6 +10,38 @@ Vector::Vector(const Number x = 0, const Number y = 0) : x(x), y(y)
 	;
 }
 
+// 运算符比较（字典升序）
+
+bool Vector::operator<(const Vector &v) const
+{
+	return !sign(x, v.x) ? sign(y, v.y) < 0 : sign(x, v.x) < 0;
+}
+
+bool Vector::operator>(const Vector &v) const
+{
+	return !sign(x, v.x) ? sign(y, v.y) > 0 : sign(x, v.x) > 0;
+}
+
+bool Vector::operator==(const Vector &v) const
+{
+	return !sign(x, v.x) && !sign(y, v.y);
+}
+
+bool Vector::operator>=(const Vector &v) const
+{
+	return !(*this < v);
+}
+
+bool Vector::operator<=(const Vector &v) const
+{
+	return !(*this > v);
+}
+
+bool Vector::operator!=(const Vector &v) const
+{
+	return !(*this == v);
+}
+
 // 线性运算
 
 Vector Vector::operator+(const Vector &v) const
@@ -69,56 +101,28 @@ Vector Vector::perpanticularVector() const // 垂直向量（逆时针旋转90�
 	return Vector(-y, x);
 }
 
-// 运算符比较（字典升序）
-
-bool Vector::operator<(const Vector &v) const
-{
-	return !sign(x, v.x) ? sign(y, v.y) < 0 : sign(x, v.x) < 0;
-}
-
-bool Vector::operator>(const Vector &v) const
-{
-	return !sign(x, v.x) ? sign(y, v.y) > 0 : sign(x, v.x) > 0;
-}
-
-bool Vector::operator==(const Vector &v) const
-{
-	return !sign(x, v.x) && !sign(y, v.y);
-}
-
-bool Vector::operator>=(const Vector &v) const
-{
-	return !(*this < v);
-}
-
-bool Vector::operator<=(const Vector &v) const
-{
-	return !(*this > v);
-}
-
-bool Vector::operator!=(const Vector &v) const
-{
-	return !(*this == v);
-}
-
-// 实数运算专用函数
-
 Real Vector::length() const // 模长
 {
 	return sqrt(norm());
 }
+
 Real Vector::slope() const // 斜率
 {
 	return Real(y) / Real(x);
 }
+
 Real Vector::radian() const // 倾斜角（弧度制）
 {
 	return atan2(y, x);
 }
+
+#ifdef REAL_AS_NUMBER
+
 Vector Vector::unitVector() const // 单位向量
 {
 	return *this / length();
 }
+
 Vector Vector::rotate(const Real r) const // 旋转（弧度制）
 {
 	return Vector(x * cos(r) - y * sin(r), x * sin(r) + y * cos(r));
@@ -128,3 +132,5 @@ Point polarToCartesian(const Real len, const Real rad) // 极坐标转直角坐�
 {
 	return Point(len * cos(rad), len * sin(rad));
 }
+
+#endif // REAL_AS_NUMBER

@@ -14,7 +14,6 @@ namespace Geometry
 			Point a, b, c;
 			Triangle();
 			Triangle(const Point &, const Point &, const Point &);
-			// 实数运算专用函数
 			Real circumference() const; // 周长
 			Real area() const;			// 面积
 		};

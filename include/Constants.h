@@ -12,10 +12,11 @@ namespace Geometry
 
 #ifndef SELF_DEFINED_NUM
 	typedef Real Number; // 普通数字（不进行开方及非整除运算，可用整数类型代替）
+	#define REAL_AS_NUMBER // 定义此行使得 Real 可以被安全地赋值给 Number
 #endif
 
 #ifndef SELF_DEFINED_EPS
-	extern const Real EPS; // 浮点数精度（默认1e-8）
+	extern const Real EPS; // 浮点数精度（默认 1e-8）
 #endif
 
 	extern const Real PI; // 圆周率（用于弧度制角度衡量）
