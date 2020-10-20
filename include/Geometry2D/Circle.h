@@ -9,7 +9,6 @@
 
 namespace Geometry
 {
-
 	namespace Geometry2D
 	{
 		struct Circle // 圆类
@@ -28,9 +27,7 @@ namespace Geometry
 			Segment operator&(const Line &) const; // 求圆和直线之间的交线段
 			int operator&&(const Circle &) const;  // 判断圆和直线是否相交（内切返回-2，外切返回-1，相离返回0，相交返回1，内含返回2）
 		};
-
 	}; // namespace Geometry2D
-
 }; // namespace Geometry
 
 #endif // GEOMETRY_2D_CIRCLE_H

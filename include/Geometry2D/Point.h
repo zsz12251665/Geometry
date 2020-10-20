@@ -5,7 +5,6 @@
 
 namespace Geometry
 {
-
 	namespace Geometry2D
 	{
 		struct Vector // 向量类（同时也是点类）
@@ -40,15 +39,11 @@ namespace Geometry
 			Vector rotate(const Real) const; // 旋转（弧度制）
 #endif // REAL_AS_NUMBER
 		};
-
 		typedef Vector Point;
-
 #ifdef REAL_AS_NUMBER
 		Point polarToCartesian(const Real, const Real); // 极坐标转直角坐标，直角坐标转极坐标可使用点类中的 length() 和 radian()
 #endif // REAL_AS_NUMBER
-
 	}; // namespace Geometry2D
-
 }; // namespace Geometry
 
 #endif // GEOMETRY_2D_POINT_H

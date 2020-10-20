@@ -6,7 +6,6 @@
 
 namespace Geometry
 {
-
 	namespace Geometry2D
 	{
 		struct Line // 直线类
@@ -29,9 +28,7 @@ namespace Geometry
 			Point operator&(const Line &) const; // 求两直线之间的交点
 #endif // REAL_AS_NUMBER
 		};
-
 	}; // namespace Geometry2D
-
 }; // namespace Geometry
 
 #endif // GEOMETRY_2D_LINE_H

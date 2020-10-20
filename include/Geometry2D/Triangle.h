@@ -6,7 +6,6 @@
 
 namespace Geometry
 {
-
 	namespace Geometry2D
 	{
 		struct Triangle // 三角形类
@@ -17,9 +16,7 @@ namespace Geometry
 			Real circumference() const; // 周长
 			Real area() const;			// 面积
 		};
-
 	}; // namespace Geometry2D
-
 }; // namespace Geometry
 
 #endif // GEOMETRY_2D_TRIANGLE_H
