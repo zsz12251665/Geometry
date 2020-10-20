@@ -4,6 +4,7 @@
 #include "Constants.h"
 #include "CircularContainer.h"
 #include "Geometry2D/Point.h"
+#include <vector>
 
 namespace Geometry
 {

@@ -1,6 +1,7 @@
 #include "Geometry2D/Polygon.h"
 #include "Geometry2D/Segment.h"
 #include "Geometry2D/Triangle.h"
+#include <algorithm>
 #include <cmath>
 
 using namespace Geometry;
