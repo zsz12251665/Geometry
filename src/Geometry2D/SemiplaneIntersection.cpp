@@ -16,7 +16,7 @@ SemiplaneIntersection SemiplaneIntersection::intersection() const // 构造半�
 	SemiplaneIntersection tmp(*this);
 	sort(tmp.begin(), tmp.end());
 	CircularContainer<deque<Line>> ans;
-	for (size_t i = 0; i < tmp.size(); ++i)
+	for (size_type i = 0; i < tmp.size(); ++i)
 	{
 		if (i && !sign(tmp.at(i).radian(), tmp.at(i - 1).radian()))
 			continue;
@@ -39,7 +39,7 @@ SemiplaneIntersection SemiplaneIntersection::intersection() const // 构造半�
 Polygon SemiplaneIntersection::toPolygon() const // 将半平面交转化为多边形（凸包）
 {
 	Polygon ans;
-	for (size_t i = 0; i < size(); ++i)
+	for (size_type i = 0; i < size(); ++i)
 		ans.push_back(Line(at(i)) & Line(at(i + 1)));
 	return ans;
 }

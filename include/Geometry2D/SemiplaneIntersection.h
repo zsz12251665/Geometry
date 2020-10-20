@@ -15,6 +15,7 @@ namespace Geometry
 	struct SemiplaneIntersection : public CircularContainer<vector<Semiplane>> // 半平面交类
 	{
 		using CircularContainer<vector<Semiplane>>::CircularContainer;
+		typedef typename vector<Semiplane>::size_type size_type;
 #ifdef REAL_AS_NUMBER
 		SemiplaneIntersection intersection() const; // 构造半平面交（半平面逆时针排列）
 		Polygon toPolygon() const; 				    // 将半平面交转化为多边形（凸包）

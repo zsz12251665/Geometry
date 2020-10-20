@@ -11,7 +11,7 @@ using namespace std;
 Real Polygon::circumference() const // 周长
 {
 	Real ans = 0;
-	for (size_t i = 0; i < size(); ++i)
+	for (size_type i = 0; i < size(); ++i)
 		ans += (at(i + 1) - at(i)).length();
 	return ans;
 }
@@ -19,7 +19,7 @@ Real Polygon::circumference() const // 周长
 Real Polygon::area() const // 面积
 {
 	Number sum = 0;
-	for (size_t i = 0; i < size(); ++i)
+	for (size_type i = 0; i < size(); ++i)
 		sum += at(i + 1) / at(i);
 	return abs(sum) / 2.0;
 }
@@ -28,13 +28,13 @@ Polygon Polygon::convexHull(const bool strict = true) const // 求点逆时针�
 {
 	Polygon cpy(*this), ans;
 	sort(cpy.begin(), cpy.end());
-	for (size_t i = 0; i < cpy.size(); ++i) // 上凸壳
+	for (size_type i = 0; i < cpy.size(); ++i) // 上凸壳
 	{
 		while (ans.size() > 1 && sign((ans.at(-1) - ans.at(-2)) / (cpy.at(i) - ans.at(-2))) < strict)
 			ans.pop_back();
 		ans.push_back(cpy.at(i));
 	}
-	for (size_t i = 2, pre = ans.size(); i <= cpy.size(); ++i) // 下凸壳
+	for (size_type i = 2, pre = ans.size(); i <= cpy.size(); ++i) // 下凸壳
 	{
 		while (ans.size() > pre && sign((ans.at(-1) - ans.at(-2)) / (cpy.at(-i) - ans.at(-2))) < strict)
 			ans.pop_back();
@@ -49,7 +49,7 @@ Polygon Polygon::convexHull(const bool strict = true) const // 求点逆时针�
 int Polygon::includes(const Point &p) const // 判断点是否在多边形内（在多边形边上返回-1，在多边形外返回0，在多边形内部返回1）
 {
 	int cnt = 0;
-	for (size_t i = 0; i < size(); ++i)
+	for (size_type i = 0; i < size(); ++i)
 	{
 		if (Segment(at(i), at(i + 1)).includes(p))
 			return -1;
@@ -63,7 +63,7 @@ int Polygon::includes(const Point &p) const // 判断点是否在多边形内（
 
 bool Polygon::isConvexHull() const // 判断多边形是否为凸包
 {
-	for (size_t i = 0; i < size(); ++i)
+	for (size_type i = 0; i < size(); ++i)
 		if (sign((at(i + 1) - at(i)) / (at(i + 2) - at(i))) < 0)
 			return false;
 	return true;
@@ -74,7 +74,7 @@ Number Polygon::convexDiameterSquare() const // 旋转卡壳求凸包直径的�
 	if (!isConvexHull())
 		return -1;
 	Number ans = 0;
-	for (size_t i = 0, now = 1; i < size(); ++i)
+	for (size_type i = 0, now = 1; i < size(); ++i)
 	{
 		while (sign(Triangle(at(i), at(i + 1), at(now)).area(), Triangle(at(i), at(i + 1), at(now + 1)).area()) < 0)
 			now = (now + 1) % size();
