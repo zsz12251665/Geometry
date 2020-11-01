@@ -66,8 +66,8 @@ int Line::operator&&(const Line &l) const // 判断两直线是否相交（重�
 
 Point Line::operator&(const Line &l) const // 求两直线之间的交点
 {
-	Number sa = Triangle(l.a, a, b).area(), sb = Triangle(l.b, a, b).area();
-	return l.a + l.direction() * sa / (sa + sb);
+	Number sa = (l.b - l.a) / (a - l.a), sb = (l.b - l.a) / (b - l.a);
+	return (a * sb - b * sa) / (sb - sa);
 }
 
 #endif // REAL_AS_NUMBER

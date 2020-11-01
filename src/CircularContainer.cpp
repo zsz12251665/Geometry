@@ -4,16 +4,14 @@ template <class T>
 typename T::value_type &CircularContainer<T>::at(const typename T::difference_type i)
 {
 	typename T::difference_type n = T::size();
-	i = (i % n + n) % n;
-	return T::at(i);
+	return T::at((i % n + n) % n);
 }
 
 template <class T>
 const typename T::value_type &CircularContainer<T>::at(const typename T::difference_type i) const
 {
 	typename T::difference_type n = T::size();
-	i = (i % n + n) % n;
-	return T::at(i);
+	return T::at((i % n + n) % n);
 }
 
 template <class T>
