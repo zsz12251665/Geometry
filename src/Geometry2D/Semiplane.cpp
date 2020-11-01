@@ -29,12 +29,12 @@ int Semiplane::includes(const Point &p) const // 判断点是否位于半平面�
 
 bool Semiplane::operator<(const Semiplane &sp) const
 {
-	return !sign(radian(), sp.radian()) ? sp.includes(a) : sign(radian(), sp.radian()) < 0;
+	return sign(radian(), sp.radian()) < 0;
 }
 
 bool Semiplane::operator>(const Semiplane &sp) const
 {
-	return !sign(radian(), sp.radian()) ? includes(sp.a) : sign(radian(), sp.radian()) > 0;
+	return sign(radian(), sp.radian()) > 0;
 }
 
 bool Semiplane::operator==(const Semiplane &sp) const

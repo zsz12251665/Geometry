@@ -16,12 +16,12 @@ namespace Geometry
 			Semiplane(const Line &);
 			int includes(const Point &) const; // 判断点是否位于半平面内（-1表示位于分界线上，0表示不在半平面内，1表示严格在半平面内）
 			// 运算符比较（极角升序）
-			bool operator<(const Semiplane &sp) const;
-			bool operator>(const Semiplane &sp) const;
-			bool operator==(const Semiplane &sp) const;
-			bool operator>=(const Semiplane &sp) const;
-			bool operator<=(const Semiplane &sp) const;
-			bool operator!=(const Semiplane &sp) const;
+			bool operator<(const Semiplane &) const;
+			bool operator>(const Semiplane &) const;
+			bool operator==(const Semiplane &) const;
+			bool operator>=(const Semiplane &) const;
+			bool operator<=(const Semiplane &) const;
+			bool operator!=(const Semiplane &) const;
 		};
 	}; // namespace Geometry2D
 }; // namespace Geometry
