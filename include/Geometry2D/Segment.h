@@ -21,6 +21,11 @@ namespace Geometry
 			Real slope() const;					  // 斜率
 			Real radian() const;				  // 倾斜角（弧度制）
 			Real distanceTo(const Point &) const; // 求点到线段的距离
+			// 相交函数
+			int operator&&(const Segment &) const; // 判断两线段是否相交（平行且相交返回-1，无交点返回0，相交返回1）
+#ifdef REAL_AS_NUMBER
+			Point operator&(const Segment &) const; // 求两线段之间的交点
+#endif // REAL_AS_NUMBER
 		};
 	}; // namespace Geometry2D
 }; // namespace Geometry

@@ -53,3 +53,23 @@ Real Segment::distanceTo(const Point &p) const // 求点到直线的距离
 		return min((p - a).length(), (p - b).length());
 	return 2 * Triangle(p, a, b).area() / direction().length();
 }
+
+// 相交函数
+
+int Segment::operator&&(const Segment &s) const // 判断两线段是否相交（平行且相交返回-1，无交点返回0，相交返回1）
+{
+	int d1 = sign((b - a) / (l.a - a)), d2 = sign((b - a) / (l.b - a));
+	int d3 = sign((s.b - s.a) / (a - s.a)), d4 = sign((s.b - s.a) / (b - s.a));
+	if ((d1 ^ d2) == -2 && (d3 ^ d4) == -2)
+		return 1;
+	return -(d1 == 0 || sign((s.a - a) / (s.a - b)) <= 0);
+}
+
+#ifdef REAL_AS_NUMBER
+
+Point Segment::operator&(const Segment &s) const // 求两线段之间的交点
+{
+	return toLine() & s.toLine();
+}
+
+#endif // REAL_AS_NUMBER
