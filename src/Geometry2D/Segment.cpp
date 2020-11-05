@@ -1,6 +1,6 @@
 #include "Geometry2D/Segment.h"
-#include "Geometry2D/Triangle.h"
 #include <algorithm>
+#include <cassert>
 #include <cmath>
 
 using namespace Geometry;
@@ -12,24 +12,24 @@ Segment::Segment()
 	;
 }
 
-Segment::Segment(const Point &a, const Point &b) : a(a), b(b)
+Segment::Segment(const Point &s, const Point &e) : s(s), e(e)
 {
 	;
 }
 
+Segment::operator Line() const // 所在直线
+{
+	return Line(s, e);
+}
+
 bool Segment::includes(const Point &p) const // 是否包含指定点
 {
-	return !sign((p - a) / (p - b)) && sign((p - a) * (p - b)) <= 0;
+	return !sign((p - s) / (p - e)) && sign((p - s) * (p - e)) <= 0;
 }
 
 Vector Segment::direction() const // 方向向量
 {
-	return b - a;
-}
-
-Line Segment::toLine() const // 所在直线
-{
-	return Line(a, b);
+	return e - s;
 }
 
 Real Segment::length() const // 线段长度
@@ -49,27 +49,28 @@ Real Segment::radian() const // 倾斜角（弧度制）
 
 Real Segment::distanceTo(const Point &p) const // 求点到直线的距离
 {
-	if (sign((p - a) * (b - a)) < 0 || sign((p - b) * (a - b)) < 0)
-		return min((p - a).length(), (p - b).length());
-	return 2 * Triangle(p, a, b).area() / direction().length();
+	if (sign((p - s) * (e - s)) < 0 || sign((p - e) * (s - e)) < 0)
+		return min((p - s).length(), (p - e).length());
+	return abs((s - p) / (e - p)) / direction().length();
 }
 
 // 相交函数
 
-int Segment::operator&&(const Segment &s) const // 判断两线段是否相交（平行且相交返回-1，无交点返回0，相交返回1）
+int Segment::operator&&(const Segment &l) const // 判断两线段是否相交（平行且相交返回-1，无交点返回0，相交返回1）
 {
-	int d1 = sign((b - a) / (l.a - a)), d2 = sign((b - a) / (l.b - a));
-	int d3 = sign((s.b - s.a) / (a - s.a)), d4 = sign((s.b - s.a) / (b - s.a));
+	int d1 = sign((e - s) / (l.s - s)), d2 = sign((e - s) / (l.e - s));
+	int d3 = sign((l.e - l.s) / (s - l.s)), d4 = sign((l.e - l.s) / (e - l.s));
 	if ((d1 ^ d2) == -2 && (d3 ^ d4) == -2)
 		return 1;
-	return -(d1 == 0 || sign((s.a - a) / (s.a - b)) <= 0);
+	return -(d1 == 0 || sign((l.s - s) / (l.s - e)) <= 0);
 }
 
 #ifdef REAL_AS_NUMBER
 
-Point Segment::operator&(const Segment &s) const // 求两线段之间的交点
+Point Segment::operator&(const Segment &l) const // 求两线段之间的交点
 {
-	return toLine() & s.toLine();
+	assert((*this && l) == 1);
+	return (Line)(*this) & (Line)l;
 }
 
 #endif // REAL_AS_NUMBER

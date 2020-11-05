@@ -10,7 +10,7 @@ namespace Geometry
 	{
 		struct Line // 直线类
 		{
-			Point a, b;
+			Point s, e;
 			Line();
 			Line(const Point &, const Point &);
 			bool includes(const Point &) const;	  // 是否包含指定点

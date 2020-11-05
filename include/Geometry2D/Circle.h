@@ -23,9 +23,11 @@ namespace Geometry
 			std::pair<Line, Line> tangentLineTo(const Point &) const; // 求点到圆的切线
 #endif // REAL_AS_NUMBER
 			// 相交函数
-			int operator&&(const Line &) const;	   // 判断圆和直线是否相交（相切返回-1，相离返回0，相交返回1）
+			int operator&&(const Line &) const; // 判断圆和直线是否相交（相切返回-1，相离返回0，相交返回1）
+#ifdef REAL_AS_NUMBER
 			Segment operator&(const Line &) const; // 求圆和直线之间的交线段
-			int operator&&(const Circle &) const;  // 判断圆和直线是否相交（内切返回-2，外切返回-1，相离返回0，相交返回1，内含返回2）
+#endif // REAL_AS_NUMBER
+			int operator&&(const Circle &) const; // 判断圆和直线是否相交（内切返回-2，外切返回-1，相离返回0，相交返回1，内含返回2）
 		};
 	}; // namespace Geometry2D
 }; // namespace Geometry

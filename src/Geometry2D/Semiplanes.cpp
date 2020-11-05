@@ -20,7 +20,7 @@ Semiplanes Semiplanes::intersection() const // 构造半平面交（半平面逆
 		if (sign(tmp.at(i).radian(), tmp.at(i - 1).radian()))
 			tmp.at(n++) = tmp.at(i);
 		else
-			if (sign((tmp.at(n - 1).b - tmp.at(n - 1).a) / (tmp.at(i).a - tmp.at(n - 1).a)) > 0)
+			if (sign((tmp.at(n - 1).e - tmp.at(n - 1).s) / (tmp.at(i).s - tmp.at(n - 1).s)) > 0)
 				tmp.at(n - 1) = tmp.at(i);
 	tmp.resize(n);
 	CircularContainer<deque<Semiplane>> ans;
@@ -39,7 +39,7 @@ Semiplanes Semiplanes::intersection() const // 构造半平面交（半平面逆
 	return Semiplanes(ans.begin(), ans.end());
 }
 
-Polygon Semiplanes::toPolygon() const // 将半平面交转化为多边形（凸包）
+Semiplanes::operator Polygon() const // 将半平面交转化为多边形（凸包）
 {
 	if (size() < 2)
 		return Polygon();

@@ -30,6 +30,6 @@ int main()
 		for (int j = 0; j < m; ++j)
 			sps.push_back(Semiplane(p.at(j), p.at(j + 1)));
 	}
-	printf("%.3lf", sps.intersection().toPolygon().area());
+	printf("%.3lf", ((Polygon)sps.intersection()).area());
 	return 0;
 }

@@ -18,7 +18,7 @@ namespace Geometry
 			typedef typename std::vector<Semiplane>::size_type size_type;
 #ifdef REAL_AS_NUMBER
 			Semiplanes intersection() const; // 构造半平面交（半平面逆时针排列）
-			Polygon toPolygon() const;		 // 将半平面交转化为多边形（凸包）
+			operator Polygon() const;		 // 将半平面交转化为多边形（凸包）
 #endif // REAL_AS_NUMBER
 		};
 	}; // namespace Geometry2D

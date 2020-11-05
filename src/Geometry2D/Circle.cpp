@@ -1,4 +1,5 @@
 #include "Geometry2D/Circle.h"
+#include <cassert>
 #include <cmath>
 
 using namespace Geometry;
@@ -44,12 +45,17 @@ int Circle::operator&&(const Line &l) const // 判断圆和直线是否相交（
 	return !sign(d, r) ? -1 : sign(d, r) < 0 ? 1 : 0;
 }
 
+#ifdef REAL_AS_NUMBER
+
 Segment Circle::operator&(const Line &l) const // 求圆和直线之间的交线段
 {
+	assert(!(*this && l));
 	Point p = l.projectPointOf(o);
 	Vector v = l.direction().unitVector() * sqrt(r * r - (p - o).norm());
 	return Segment(p - v, p + v);
 }
+
+#endif // REAL_AS_NUMBER
 
 int Circle::operator&&(const Circle &c) const // 判断圆和直线是否相交（内切返回-2，外切返回-1，相离返回0，相交返回1，内含返回2）
 {

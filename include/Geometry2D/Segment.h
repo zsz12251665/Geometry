@@ -11,12 +11,12 @@ namespace Geometry
 	{
 		struct Segment // 直线类
 		{
-			Point a, b;
+			Point s, e;
 			Segment();
 			Segment(const Point &, const Point &);
+			operator Line() const;				  // 所在直线
 			bool includes(const Point &) const;	  // 是否包含指定点
 			Vector direction() const;			  // 方向向量
-			Line toLine() const;				  // 所在直线
 			Real length() const;				  // 线段长度
 			Real slope() const;					  // 斜率
 			Real radian() const;				  // 倾斜角（弧度制）
