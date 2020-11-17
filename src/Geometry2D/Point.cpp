@@ -5,7 +5,7 @@ using namespace Geometry;
 using namespace Geometry2D;
 using namespace std;
 
-Vector::Vector(const Number x, const Number y) : x(x), y(y)
+Vector::Vector(const Number &x, const Number &y) : x(x), y(y)
 {
 	;
 }
@@ -54,12 +54,12 @@ Vector Vector::operator-(const Vector &v) const
 	return Vector(x - v.x, y - v.y);
 }
 
-Vector Vector::operator*(const Number c) const
+Vector Vector::operator*(const Number &c) const
 {
 	return Vector(x * c, y * c);
 }
 
-Vector Vector::operator/(const Number c) const
+Vector Vector::operator/(const Number &c) const
 {
 	return Vector(x / c, y / c);
 }
@@ -118,17 +118,17 @@ Real Vector::radian() const // 倾斜角（弧度制）
 
 #ifdef REAL_AS_NUMBER
 
-Vector Vector::unitVector() const // 单位向量
+Vector Vector::unitVector(const Number &len) const // 单位向量（参数控制向量长度）
 {
-	return *this / length();
+	return *this / length() * len;
 }
 
-Vector Vector::rotate(const Real r) const // 旋转（弧度制）
+Vector Vector::rotate(const Real &r) const // 逆时针旋转（弧度制）
 {
 	return Vector(x * cos(r) - y * sin(r), x * sin(r) + y * cos(r));
 }
 
-Point polarToCartesian(const Real len, const Real rad) // 极坐标转直角坐标，直角坐标转极坐标可使用点类中的 length() 和 radian()
+Point polarToCartesian(const Number &len, const Real &rad) // 极坐标转直角坐标，直角坐标转极坐标可使用点类中的 length() 和 radian()
 {
 	return Point(len * cos(rad), len * sin(rad));
 }

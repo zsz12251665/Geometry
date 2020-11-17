@@ -24,7 +24,7 @@ Real Polygon::area() const // 面积
 	return abs(sum) / 2.0;
 }
 
-Polygon Polygon::convexHull(const bool strict = true) const // 求点逆时针排列的凸包。参数表示是否去除边上的点
+Polygon Polygon::convexHull(const bool &strict) const // 求点逆时针排列的凸包。参数表示是否去除边上的点
 {
 	Polygon cpy(*this), ans;
 	sort(cpy.begin(), cpy.end());
