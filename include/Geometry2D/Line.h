@@ -19,7 +19,7 @@ namespace Geometry
 			Real radian() const;				  // 倾斜角（弧度制）
 			Real distanceTo(const Point &) const; // 求点到直线的距离
 #ifdef REAL_AS_NUMBER
-			Point projectPointOf(const Point &) const;	// 指定点到直线的投影（在垂直直线的方向上）
+			Point projectPointOf(const Point &) const;  // 指定点到直线的投影（在垂直直线的方向上）
 			Point symmetryPointOf(const Point &) const; // 指定点关于直线的对称点
 #endif // REAL_AS_NUMBER
 			// 相交函数

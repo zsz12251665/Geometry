@@ -14,7 +14,7 @@ namespace Geometry
 			Triangle();
 			Triangle(const Point &, const Point &, const Point &);
 			Real circumference() const; // 周长
-			Real area() const;			// 面积
+			Real area() const;		    // 面积
 		};
 	}; // namespace Geometry2D
 }; // namespace Geometry

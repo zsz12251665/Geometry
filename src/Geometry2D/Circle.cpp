@@ -30,6 +30,7 @@ Real Circle::area() const // 面积
 
 pair<Point, Point> Circle::tangentPointsTo(const Point &p) const // 求点到圆的切点
 {
+	assert(!includes(p));
 	Real rad = acos(r / (p - o).length());
 	Vector v = (p - o).unitVector() * r;
 	return make_pair(o + v.rotate(-rad),  o + v.rotate(rad));
@@ -37,6 +38,7 @@ pair<Point, Point> Circle::tangentPointsTo(const Point &p) const // 求点到圆
 
 pair<Line, Line> Circle::tangentLinesTo(const Point &p) const // 求点到圆的切线
 {
+	assert(!includes(p));
 	auto tangentPoints = tangentPointsTo(p);
 	return make_pair(Line(p, tangentPoints.first), Line(p, tangentPoints.second));
 }

@@ -10,10 +10,10 @@ namespace Geometry
 {
 	namespace Geometry2D
 	{
-		struct Polygon : public CircularContainer<vector<Point>> // 多边形类，点应按逆时针顺序排列（实际无严格限制）
+		struct Polygon : public CircularContainer<std::vector<Point>> // 多边形类，点应按逆时针顺序排列（实际无严格限制）
 		{
-			using CircularContainer<vector<Point>>::CircularContainer;
-			typedef typename vector<Point>::size_type size_type;
+			using CircularContainer<std::vector<Point>>::CircularContainer;
+			typedef typename std::vector<Point>::size_type size_type;
 			Real circumference() const;					 // 周长
 			Real area() const;							 // 面积
 			Polygon convexHull(const bool & = true) const; // 求点逆时针排列的凸包。参数表示是否去除边上的点

@@ -1,5 +1,4 @@
 #include "Geometry2D/Semiplane.h"
-#include <cmath>
 
 using namespace Geometry;
 using namespace Geometry2D;
