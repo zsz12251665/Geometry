@@ -6,7 +6,7 @@ using namespace Geometry;
 using namespace Geometry2D;
 using namespace std;
 
-Circle::Circle(const Number r = 0, const Point &o = {}) : r(r), o(o)
+Circle::Circle(const Number r, const Point &o) : r(r), o(o)
 {
 	;
 }
@@ -47,6 +47,8 @@ int Circle::operator&&(const Line &l) const // 判断圆和直线是否相交（
 
 #ifdef REAL_AS_NUMBER
 
+#ifdef GEOMETRY_2D_SEGMENT_H
+
 Segment Circle::operator&(const Line &l) const // 求圆和直线之间的交线段
 {
 	assert(!(*this && l));
@@ -54,6 +56,8 @@ Segment Circle::operator&(const Line &l) const // 求圆和直线之间的交线
 	Vector v = l.direction().unitVector() * sqrt(r * r - (p - o).norm());
 	return Segment(p - v, p + v);
 }
+
+#endif // GEOMETRY_2D_SEGMENT_H
 
 #endif // REAL_AS_NUMBER
 

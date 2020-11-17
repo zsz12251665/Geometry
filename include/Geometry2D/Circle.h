@@ -25,7 +25,9 @@ namespace Geometry
 			// 相交函数
 			int operator&&(const Line &) const; // 判断圆和直线是否相交（相切返回-1，相离返回0，相交返回1）
 #ifdef REAL_AS_NUMBER
+#ifdef GEOMETRY_2D_SEGMENT_H
 			Segment operator&(const Line &) const; // 求圆和直线之间的交线段
+#endif // GEOMETRY_2D_SEGMENT_H
 #endif // REAL_AS_NUMBER
 			int operator&&(const Circle &) const; // 判断圆和直线是否相交（内切返回-2，外切返回-1，相离返回0，相交返回1，内含返回2）
 		};

@@ -5,7 +5,7 @@ using namespace Geometry;
 using namespace Geometry2D;
 using namespace std;
 
-Vector::Vector(const Number x = 0, const Number y = 0) : x(x), y(y)
+Vector::Vector(const Number x, const Number y) : x(x), y(y)
 {
 	;
 }
