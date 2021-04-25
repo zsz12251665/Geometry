@@ -11,7 +11,7 @@ namespace Geometry
 		struct Vector // 向量类（同时也是点类）
 		{
 			Number x, y;
-			Vector(const Number &x = 0, const Number &y = 0) {}
+			Vector(const Number &x = 0, const Number &y = 0) : x(x), y(y) {}
 			// 运算符比较（字典升序）
 			bool operator<(const Vector &v) const { return !sign(x, v.x) ? sign(y, v.y) < 0 : sign(x, v.x) < 0; }
 			bool operator>(const Vector &v) const { return !sign(x, v.x) ? sign(y, v.y) > 0 : sign(x, v.x) > 0; }
