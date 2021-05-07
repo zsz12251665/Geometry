@@ -10,16 +10,16 @@ struct CircularContainer : public T // 可循环索引的容器模板（需支�
 		typename T::difference_type n = T::size();
 		return T::at((i % n + n) % n);
 	}
-	const typename T::value_type &at(const typename T::difference_type) const
+	const typename T::value_type &at(const typename T::difference_type i) const
 	{
 		typename T::difference_type n = T::size();
 		return T::at((i % n + n) % n);
 	}
-	typename T::value_type &operator[](const typename T::difference_type)
+	typename T::value_type &operator[](const typename T::difference_type i)
 	{
 		return at(i);
 	}
-	const typename T::value_type &operator[](const typename T::difference_type) const
+	const typename T::value_type &operator[](const typename T::difference_type i) const
 	{
 		return at(i);
 	}
